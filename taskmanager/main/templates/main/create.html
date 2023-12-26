@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+сторінка про нас
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.task }}<br>
+        <button type="submit" class="btn btn-success">Додати</button><br>
+        {% if tasks %}
+        {% for el in tasks %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.task }}</p>
+                <div><BUTTON>Відповісти</BUTTON></div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>Коментарі відсутні</p>
+        {% endif %}
+    </form>
+{% endblock %}
